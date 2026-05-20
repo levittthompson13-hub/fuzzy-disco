@@ -1,37 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Color Flipper</title>
-  <!-- Link to CSS file -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Color Flipper</title>
+    <!-- Use <style> for CSS, not <script> -->
+    <style>
+        body {
+            background-color: #f1f5f8;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        #btn {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: #222;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #btn:hover {
+            background: #444;
+        }
+    </style>
 </head>
 <body>
-  <main>
-    <div class="container">
-      <h2>Background Color: <span id="color-code">#F1F5F8</span></h2>
-      <button id="btn">Click Me!</button>
-    </div>
-  </main>
-  <!-- Link to JS file -->
-  <script> // Javascript
-const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-const btn = document.getElementById("btn");
-const colorCode = document.getElementById("color-code");
+    <main>
+        <div class="container">
+            <h2>Background Color: <span id="color-code">#F1F5F8</span></h2>
+            <button id="btn">Click Me!</button>
+        </div>
+    </main>
 
-btn.addEventListener("click", function() {
-  let hexColor = "#";
-  // Loop 6 times to generate a random 6-character hex code
-  for (let i = 0; i < 6; i++) {
-    hexColor += hex[getRandomNumber()]; // gets the random number for the hex code for the color
-  }
+    <script>
+        const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+        const btn = document.getElementById("btn");
+        const colorCode = document.getElementById("color-code");
 
-  colorCode.textContent = hexColor;
-  document.body.style.backgroundColor = hexColor;
-});
+        btn.addEventListener("click", function() {
+            let hexColor = "#";
+            for (let i = 0; i < 6; i++) {
+                hexColor += hex[getRandomNumber()];
+            }
+            colorCode.textContent = hexColor;
+            document.body.style.backgroundColor = hexColor;
+        });
 
-function getRandomNumber() {
-  return Math.floor(Math.random() * hex.length);
-}</script>
+        function getRandomNumber() {
+            return Math.floor(Math.random() * hex.length);
+        }
+    </script>
 </body>
 </html>
